@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <title>Kids Web Development Bootcamp | Half-Term</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css"/>
+  
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js" defer></script>
 
   <style>
     body {
@@ -130,6 +133,36 @@
 </head>
 
 <body>
+
+<script>
+  const phoneInput = document.querySelector("#phone");
+
+  const iti = window.intlTelInput(phoneInput, {
+    initialCountry: "auto",
+    separateDialCode: true,
+    nationalMode: false,
+    utilsScript:
+      "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js",
+    geoIpLookup: function (callback) {
+      fetch("https://ipapi.co/json/")
+        .then(res => res.json())
+        .then(data => callback(data.country_code))
+        .catch(() => callback("US"));
+    }
+  });
+
+  // Validate on submit
+  phoneInput.form.addEventListener("submit", function (e) {
+    if (!iti.isValidNumber()) {
+      e.preventDefault();
+      alert("Please enter a valid international phone number.");
+    } else {
+      // Replace input value with full international number
+      phoneInput.value = iti.getNumber();
+    }
+  });
+</script>
+
 
 <header>
   <h1>Web Development Bootcamp for Kids</h1>
