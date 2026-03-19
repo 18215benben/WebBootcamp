@@ -126,14 +126,48 @@
         padding: 40px 20px;
       }
     }
+    form {
+      background: white;
+      padding: 18px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+    /* all input except checkboxes */
+    input :not([type="checkbox"]) {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    textarea {
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      width: 100%;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+     button {
+      background: #4f46e5;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+     button:hover {
+      background: #4338ca;
+    }
   </style>
 </head>
 
 <body>
-  
+
 <header>
   <h1>Web Development Bootcamp for Kids</h1>
-  <p>February Half-Term • Ages 8–11 • Live Online</p>
+  <p>Easter Break • Ages 8–11 • Live Online</p>
 </header>
 
 <section>
@@ -143,13 +177,14 @@
     <p>
       A friendly, live web development bootcamp designed for children aged
       <strong>8–11</strong>.
-      During February half-term, children learn how real websites are made using HTML,
+      During Easter Break, children learn how real websites are made using HTML,
       CSS, and simple interactive features.
     </p>
     <p>
-      By the end of the week, every child finishes their own website <strong>-like this one that I made-</strong>and feels confident
+      By the end of the week, every child finishes their own website and feels confident
       explaining how it works.
     </p>
+    <button class="cta" onclick="document.getElementById('form').scrollIntoView()">Sign Up Now</button>
   </div>
 
   <div class="box">
@@ -158,9 +193,9 @@
       The sessions are taught by an <strong>11-year-old web developer</strong>(which has been coding for 3 years) and is skilled at building websites and explaining coding clearly to other children.
       Here are some examples of websites he has built:
       <ul>
-        <li><a href="https://18215benben.github.io/Sandbox-game" target="_blank">Sandbox game(Computer Only)</a> - A simple game built using HTML, CSS, and JavaScript</li>
+        <li><a href="https://ramibenben.github.io/Rami_Benbenishty/" target="_blank">Rami Benbenishty</a> - A personal portfolio website (in development)</li>
+        <li><a href="https://18215benben.github.io/Sandbox-game" target="_blank">Sandbox game </a> - A simple game built using HTML, CSS, and JavaScript (Complete)</li>
         <li><a href="https://18215benben.github.io/QRCodeGen" target="_blank">QR Code Generator</a> - A simple QR code generator built using HTML, CSS, and JavaScript</li>
-        <li><a href="https://ramibenben.github.io/Rami_Benbenishty/" target="_blank">Rami Benbenishty(Computer Only)</a> - A personal portfolio website made for his grandfather(in development)</li>
       </ul>
     </p>
     <p>
@@ -179,7 +214,7 @@
     <p>
       Lessons are progressive, meaning skills build day by day.
       Children may join with different experience levels, and everyone finishes together.
-      <strong>Lessons take place at 3:00pm GMT.</strong>
+      <strong>Lessons take place at 5:00pm GMT</strong>
     </p>
 
     <table>
@@ -232,80 +267,43 @@
     <p>
       ✔ Affordable for families<br>
       ✔ Much cheaper than most holiday camps<br>
-      ✔ Free Sunday trial available before half-term taking place at 10:00 GMT
+      ✔ Free Saturday trial available before half-term
     </p>
   </div>
 
-  <div class="box">
-  <h2>📩 Contact / Reserve a Place</h2>
-
-  <form action="https://formsubmit.co/18215benben@gmail.com" method="POST">
-    
-    <!-- Disable captcha -->
-    <input type="hidden" name="_captcha" value="false">
-
-    <!-- Email subject -->
-    <input type="hidden" name="_subject" value="Bootcamp Enquiry">
-
-    <!-- Redirect after submit (change if needed) -->
-    <input type="hidden" name="_next" value="https://18215benben.github.io/WebBootcamp/Thanks.html">
-
-    <label>
-      Parent Name<br>
-      <input type="text" name="Parent Name" required style="width:90%; padding:10px; margin-top:4px; border-radius:20px;">
+  <form action="https://formspree.io/f/xnjgwwoq" method="POST" id="form">
+    <label> Your Name:
+      <input type="text" name="Name" required>
     </label>
     <br><br>
-
-    <label>
-      Child Name<br>
-      <input type="text" name="Child Name" required style="width:90%; padding:10px; margin-top:4px; border-radius:20px;">
+    <label> Childs Name:
+      <input type="text" name="C_Name" required>
     </label>
     <br><br>
-
-    <label>
-      Child Age<br>
-      <input type="number" name="Child Age" min="8" max="11" required style="width:90%; padding:10px; margin-top:4px; border-radius:20px;">
-    </label>
-    <br><br>
-
-    <label>
-      Parent Email<br>
-      <input type="email" name="Reply Email" required style="width:90%; padding:10px; margin-top:4px; border-radius:20px;">
-    </label>
-    <br><br>
-
-    <label>
-      Parent Mobile Phone<br>
-      <input type="tel" name="phone_number" required style="width:90%; padding:10px; margin-top:4px; border-radius:20px;"> 
-
-    <label>
-      Message<br>
-      <textarea name="Message" rows="4" style="width:90%; padding:10px; margin-top:4px; border-radius:20px;"></textarea>
-    </label>
-    <br><br>
-
-    <button type="submit" style="
-      background:#4f46e5;
-      color:white;
-      border:none;
-      padding:12px 18px;
-      border-radius:8px;
-      font-size:1rem;
-      font-weight:600;
-      cursor:pointer;
-      width:100%;
-    ">
-      Send Message
-    </button>
-
-  </form>
-</div>
-
+  <label> Your email:
+    <input type="email" name="email" required>
+  </label>
+  <br><br>
+  <label> Your Mobile Number:
+    <input type="tel" name="tel" required>
+  </label>
+  <br><br>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <br><br>
+    <input type="checkbox" name="checkbox" id="check" required>
+  <label for="check"> I have read the information above and I am interested in signing up for the bootcamp I have also read the <a>Terms and conditions</a></label>
+  <br><br>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
 
 </section>
 
 <footer>
-  © Kids Web Development Bootcamp • February Half-Term
+  © Kids Web Development Bootcamp • Easter Break
 </footer>
 
 </body>
