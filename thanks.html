@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Thanks!</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#0f1115;
+  color:#eaeaf0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:40px 15px;
+  overflow:hidden;
+}
+
+/* floating background orbs */
+.orb{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:0.07;
+  pointer-events:none;
+  animation:drift 12s ease-in-out infinite alternate;
+}
+.orb1{width:400px;height:400px;background:#7cff6b;top:-100px;left:-100px;animation-delay:0s;}
+.orb2{width:300px;height:300px;background:#7cff6b;bottom:-80px;right:-80px;animation-delay:-6s;}
+
+@keyframes drift{
+  from{transform:translate(0,0);}
+  to{transform:translate(40px,30px);}
+}
+
+/* card */
+.card{
+  width:100%;
+  max-width:520px;
+  background:#181a20;
+  border:1px solid #2b2f36;
+  border-radius:18px;
+  padding:50px 40px;
+  text-align:center;
+  position:relative;
+  animation:rise 0.6s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(24px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* checkmark */
+.check-ring{
+  width:72px;height:72px;
+  border-radius:50%;
+  background:rgba(124,255,107,0.1);
+  border:2px solid rgba(124,255,107,0.3);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 28px;
+  animation:pop 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.3s both;
+}
+
+@keyframes pop{
+  from{opacity:0;transform:scale(0.5);}
+  to{opacity:1;transform:scale(1);}
+}
+
+.check-ring svg{
+  width:32px;height:32px;
+  animation:draw 0.4s ease 0.7s both;
+}
+
+@keyframes draw{
+  from{stroke-dashoffset:40;}
+  to{stroke-dashoffset:0;}
+}
+
+.check-ring svg path{
+  stroke:#7cff6b;
+  stroke-width:3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  fill:none;
+  stroke-dasharray:40;
+  stroke-dashoffset:40;
+  animation:draw 0.4s ease 0.7s forwards;
+}
+
+h1{
+  font-size:26px;
+  font-weight:600;
+  margin-bottom:10px;
+  animation:fade 0.5s ease 0.5s both;
+}
+
+.sub{
+  font-size:15px;
+  color:#8b8f98;
+  line-height:1.6;
+  margin-bottom:36px;
+  animation:fade 0.5s ease 0.6s both;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* score pill – shown only if URL has ?score= */
+.score-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(124,255,107,0.08);
+  border:1px solid rgba(124,255,107,0.25);
+  border-radius:30px;
+  padding:8px 18px;
+  font-size:14px;
+  color:#7cff6b;
+  font-weight:600;
+  margin-bottom:36px;
+  animation:fade 0.5s ease 0.7s both;
+}
+.score-badge .dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  background:#7cff6b;
+  animation:pulse 1.4s ease infinite;
+}
+@keyframes pulse{
+  0%,100%{opacity:1;transform:scale(1);}
+  50%{opacity:0.4;transform:scale(0.7);}
+}
+
+/* divider */
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,#2b2f36,transparent);
+  margin:0 0 28px;
+  animation:fade 0.5s ease 0.8s both;
+}
+
+/* back button */
+.btn{
+  display:inline-block;
+  padding:12px 28px;
+  background:#7cff6b;
+  color:#0f1115;
+  font-weight:600;
+  font-size:15px;
+  border-radius:10px;
+  text-decoration:none;
+  transition:opacity 0.15s, transform 0.15s;
+  animation:fade 0.5s ease 0.9s both;
+}
+.btn:hover{opacity:0.88;transform:translateY(-1px);}
+.btn:active{transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<div class="card">
+
+  <div class="check-ring">
+    <svg viewBox="0 0 24 24">
+      <path d="M5 12.5l5 5 9-9"/>
+    </svg>
+  </div>
+
+  <h1>Thanks for your feedback!</h1>
+  <p class="sub">Your response has been recorded.<br>We'll use it to make the course better.</p>
+
+  <div class="score-badge" id="scoreBadge" style="display:none;">
+    <span class="dot"></span>
+    <span id="scoreText">Quiz score: —</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <a class="btn" href="Form.html">← Back to form</a>
+
+</div>
+
+<script>
+/* pull ?score= from URL if FormSubmit redirected with it */
+const params = new URLSearchParams(location.search);
+const score  = params.get("score") || params.get("quiz_score");
+if(score){
+  document.getElementById("scoreText").textContent = "Quiz score: " + score;
+  document.getElementById("scoreBadge").style.display = "inline-flex";
+}
+</script>
+
+</body>
+</html>
