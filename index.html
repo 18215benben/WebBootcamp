@@ -126,6 +126,14 @@
         padding: 40px 20px;
       }
     }
+    header .dates {
+      margin-top: 6px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+    .dates-line {
+      margin-bottom: 10px;
+    }
     form {
       background: white;
       padding: 18px;
@@ -134,7 +142,7 @@
       box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     }
     /* all input except checkboxes */
-    input :not(type="checkbox") {
+    input :not([type="checkbox"]) {
       padding: 8px;
       border: 1px solid #ddd;
       border-radius: 6px;
@@ -167,7 +175,8 @@
 
 <header>
   <h1>Web Development Bootcamp for Kids</h1>
-  <p>Easter Break • Ages 8–11 • Live Online</p>
+  <p>Summer Break • Ages 8–11 • Live Online</p>
+  <p class="dates">Sun 23 – Fri 28 August 2026 • 6 live sessions</p>
 </header>
 
 <section>
@@ -177,7 +186,9 @@
     <p>
       A friendly, live web development bootcamp designed for children aged
       <strong>8–11</strong>.
-      During Easter Break, children learn how real websites are made using HTML,
+      The bootcamp runs <strong>Sunday 23 August to Friday 28 August 2026</strong> —
+      six live sessions, starting with Lesson 1 on the Sunday.
+      During Summer Break, children learn how real websites are made using HTML,
       CSS, and simple interactive features.
     </p>
     <p>
@@ -196,6 +207,7 @@
         <li><a href="https://ramibenben.github.io/Rami_Benbenishty/" target="_blank">Rami Benbenishty</a> - A personal portfolio website (in development)</li>
         <li><a href="https://18215benben.github.io/Sandbox-game" target="_blank">Sandbox game </a> - A simple game built using HTML, CSS, and JavaScript (Complete)</li>
         <li><a href="https://18215benben.github.io/QRCodeGen" target="_blank">QR Code Generator</a> - A simple QR code generator built using HTML, CSS, and JavaScript</li>
+        <li><a href="https://www.recipehub.benbenishty.co.uk" target="_blank">Recipe site for family</a> - A simple recipe site built using HTML, CSS, and JavaScript</li>
       </ul>
     </p>
     <p>
@@ -211,36 +223,48 @@
 
   <div class="box">
     <h2>📅 How the Week Works</h2>
+    <p class="dates-line"><strong>Sunday 23 August – Friday 28 August 2026 (6 sessions)</strong></p>
     <p>
       Lessons are progressive, meaning skills build day by day.
       Children may join with different experience levels, and everyone finishes together.
-      <strong>Lessons take place at 6:00pm BST</strong>
+      <strong>Lessons take place at 5:00pm BST</strong>
     </p>
 
     <table>
       <tr>
-        <th>Day</th>
+        <th>Lesson</th>
+        <th>Date</th>
         <th>Focus</th>
       </tr>
       <tr>
-        <td>Monday</td>
-        <td>Foundations – What websites are & basic HTML</td>
+        <td>1</td>
+        <td>Sunday 23 Aug</td>
+        <td>Getting started – Zoom, GitHub & your first web page</td>
       </tr>
       <tr>
-        <td>Tuesday</td>
+        <td>2</td>
+        <td>Monday 24 Aug</td>
+        <td>Foundations – What websites are &amp; basic HTML</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Tuesday 25 Aug</td>
         <td>Design – Styling with CSS</td>
       </tr>
       <tr>
-        <td>Wednesday</td>
-        <td>Interactivity – Buttons & simple effects</td>
+        <td>4</td>
+        <td>Wednesday 26 Aug</td>
+        <td>Interactivity – Buttons &amp; simple effects</td>
       </tr>
       <tr>
-        <td>Thursday</td>
+        <td>5</td>
+        <td>Thursday 27 Aug</td>
         <td>Build – Combining everything</td>
       </tr>
       <tr>
-        <td>Friday</td>
-        <td>Showcase – Finish & present projects</td>
+        <td>6</td>
+        <td>Friday 28 Aug</td>
+        <td>Showcase – Finish &amp; present projects</td>
       </tr>
     </table>
 
@@ -263,27 +287,21 @@
 
   <div class="box">
     <h2>💷 Pricing</h2>
-    <p class="price">£30 for the full week (5 sessions)</p>
+    <p class="price">£30 for the full course (6 sessions)</p>
     <p>
       ✔ Affordable for families<br>
       ✔ Much cheaper than most holiday camps<br>
-      ✔ Free Saturday trial available before half-term
+      ✔ All six sessions included, starting <strong>Sunday 23 August 2026</strong>
     </p>
   </div>
 
-  <form action="https://formsubmit.co/18215benben@gmail.com" method="POST" id="form">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://18215benben.github.io/WebBootcamp/Thanks.html">
+  <form action="https://formspree.io/f/xnjgwwoq" method="POST" id="form">
     <label> Your Name:
       <input type="text" name="Name" required>
     </label>
     <br><br>
     <label> Childs Name:
       <input type="text" name="C_Name" required>
-    </label>
-    <br><br>
-    <label> Childs Age:
-      <input type="number" name="C_Age" min="8" max="11">
     </label>
     <br><br>
   <label> Your email:
@@ -300,7 +318,7 @@
   </label>
   <br><br>
     <input type="checkbox" name="checkbox" id="check" required>
-  <label for="check"> I have read the information above and I am interested in signing up for the bootcamp I have also read the <a href='terms.html'>Terms and conditions</a></label>
+  <label for="check"> I have read the information above and I am interested in signing up for the bootcamp I have also read the <a>Terms and conditions</a></label>
   <br><br>
   <!-- your other form fields go here -->
   <button type="submit">Send</button>
@@ -309,7 +327,7 @@
 </section>
 
 <footer>
-  © Kids Web Development Bootcamp • Easter Break
+  © Kids Web Development Bootcamp • Summer Break 2026 • 23–28 August
 </footer>
 
 </body>
